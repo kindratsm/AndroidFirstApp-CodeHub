@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.os.PersistableBundle
 import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.RecyclerView
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -23,6 +24,18 @@ class MainActivity : AbstractActivity() {
             setSubtitle(R.string.app_name)
             setBackgroundColor(ContextCompat.getColor(this@MainActivity, R.color.textColor))
         }
+
+        val adapter = ShowNowAdapter(this)
+        adapter.updateData(
+            listOf(
+                "First",
+                "Second",
+                "Third"
+            )
+        )
+
+        val recyclerView: RecyclerView? = findViewById(R.id.recyclerView)
+        recyclerView?.adapter = adapter
     }
 
     override fun refreshUI() {
